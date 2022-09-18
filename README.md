@@ -1,5 +1,9 @@
 ### Hi there 👋
-
+# Education
+## 2022--
+University of Stavanger, Master of Computer Science. Stavanger, Norway
+## 2019--2022
+University of Stavanger, Bachelor of Computer Science. Stavanger, Norway
 <!--
 **vidarandrebo/vidarandrebo** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
