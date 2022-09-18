@@ -18,3 +18,6 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+# My Setup
+## Editor Font of Choice
+[IBM Plex Mono](https://github.com/IBM/plex)
