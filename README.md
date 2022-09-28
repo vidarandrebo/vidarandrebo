@@ -21,3 +21,8 @@ Here are some ideas to get you started:
 # My Setup
 ## Editor Font of Choice
 [IBM Plex Mono](https://github.com/IBM/plex)
+
+## Editor Configs
+[Vim](.vimrc)
+
+[NeoVim](init.vim)
