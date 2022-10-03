@@ -59,21 +59,25 @@ let g:ale_linters = {
             \'cs': ['OmniSharp']
             \}
 
-""coc
-"" Use tab for trigger completion with characters ahead and navigate.
-"" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-"" other plugin before putting this into your config.
+"coc
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
 "inoremap <silent><expr> <TAB>
 "      \ pumvisible() ? "\<C-n>" :
 "      \ CheckBackspace() ? "\<TAB>" :
 "      \ coc#refresh()
 "inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-"function! CheckBackspace() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-"
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+
 let g:coc_global_extensions = [
             \'coc-snippets',
             \'coc-tsserver',
@@ -82,11 +86,12 @@ let g:coc_global_extensions = [
             \'coc-json',
             \'coc-pyright',
             \'coc-r-lsp',
+            \'coc-clangd',
             \'coc-vue'
             \]
 
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "Rust"
 let g:rustfmt_autosave = 1
