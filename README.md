@@ -23,7 +23,8 @@ Here are some ideas to get you started:
 [IBM Plex Mono](https://github.com/IBM/plex)
 
 ## Editor Configs
-I usually use a version of vim or an editor with some form of vim emulation. Here are my rc files.
-[Vim](.vimrc)
+I usually use a version of vim or an editor with some form of vim emulation. Here are my rc files:
+
+[Vim](.vimrc) This is mostly used with VS and certain Jetbranins IDEs
 
 [NeoVim](init.vim)
