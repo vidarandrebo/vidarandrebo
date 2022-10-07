@@ -25,6 +25,6 @@ Here are some ideas to get you started:
 ## Editor Configs
 I usually use a version of vim or an editor with some form of vim emulation. Here are my rc files:
 
-[Vim](.vimrc) (This one is mostly used with VS and certain Jetbrains IDEs)
+[Vim](.vimrc) (This one is mostly used with VS and certain Jetbrains IDEs, and therfore does not include any extensions)
 
-[NeoVim](init.vim)
+[NeoVim](init.vim) I use NeoVim for programming smaller projects in C, python and for general text editing.
