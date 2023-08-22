@@ -47,6 +47,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
 
 Plug 'ayu-theme/ayu-vim' " or other package manager
+Plug 'olimorris/onedarkpro.nvim'
 
 call plug#end()
 
@@ -103,4 +104,5 @@ set termguicolors     " enable true colors support
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
 let ayucolor="dark"   " for dark version of theme
+"colorscheme onedark_vivid
 colorscheme ayu

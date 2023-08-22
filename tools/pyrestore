@@ -1,0 +1,21 @@
+#/bin/bash
+dir="./venv"
+file="./requirements.txt"
+
+if ! [ -f "$file" ]
+then
+    echo requirements not found
+    exit 0
+fi
+
+if [ -d "$dir" ] 
+then
+    echo "found venv"
+    source venv/bin/activate
+    pip install -r requirements.txt
+else
+    echo "creating venv"
+    python -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+fi
