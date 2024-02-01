@@ -43,9 +43,6 @@ Plug 'dense-analysis/ale'
 "Rust"
 Plug 'rust-lang/rust.vim'
 
-"Go"
-Plug 'fatih/vim-go'
-
 Plug 'ayu-theme/ayu-vim' " or other package manager
 Plug 'olimorris/onedarkpro.nvim'
 

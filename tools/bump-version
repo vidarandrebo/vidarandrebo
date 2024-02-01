@@ -1,0 +1,18 @@
+#!/bin/sh
+
+allowedVersions=("major" "minor" "patch")
+if  ! printf '%s\0' "${allowedVersions[@]}" | grep -Fxqz -- $1; then
+    echo "Error: versions can only be 'major', 'minor' or 'patch'"
+    exit
+fi
+
+if [ -z "$2" ]
+then 
+    echo "Erorr: package.json dir not supplied"
+    exit
+fi
+
+echo "Updating $1 version"
+npm version --prefix $2 $1
+VERSION=`find . -type f -name "package.json" | grep -v "node_module" | xargs cat | jq -r '.version'`
+find . -type f -name "*.csproj" | xargs -L 1 set-csproj-version $VERSION 
