@@ -8,7 +8,7 @@ fi
 
 if [ -z "$2" ]
 then 
-    echo "Erorr: package.json dir not supplied"
+    echo "Error: package.json dir not supplied"
     exit
 fi
 
