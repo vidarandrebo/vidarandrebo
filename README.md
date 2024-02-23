@@ -1,4 +1,4 @@
-### Hi there 👋
+### Hello there 👋
 # Education
 ## 2022-
 University of Stavanger, Master of Computer Science - Secure and Reliable Systems

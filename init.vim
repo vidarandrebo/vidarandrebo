@@ -44,14 +44,23 @@ Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 
 Plug 'ayu-theme/ayu-vim' " or other package manager
-Plug 'olimorris/onedarkpro.nvim'
+Plug 'navarasu/onedark.nvim'
 Plug 'preservim/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
-let g:go_fmt_command = "goimports"
 
+"Go"
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
 autocmd BufWritePre *.go :silent! GoFmt
 
 ".NET"
@@ -62,7 +71,8 @@ let g:OmniSharp_want_snippet = 1
 
 "Ale"
 let g:ale_linters = {
-            \'cs': ['OmniSharp']
+            \'cs': ['OmniSharp'],
+            \'go': ['vet', 'golint', 'typecheck']
             \}
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -90,7 +100,6 @@ endfunction
 let g:coc_global_extensions = [
             \'coc-snippets',
             \'coc-tsserver',
-            \'coc-go',
             \'coc-rust-analyzer',
             \'coc-json',
             \'coc-pyright',
@@ -109,6 +118,9 @@ let g:rustfmt_autosave = 1
 set termguicolors     " enable true colors support
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
+let g:onedark_config = {
+    \ 'style': 'darker',
+\}
 let ayucolor="dark"   " for dark version of theme
-"colorscheme onedark_vivid
-colorscheme ayu
+colorscheme onedark
+"colorscheme ayu
