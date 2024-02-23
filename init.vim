@@ -45,10 +45,18 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'ayu-theme/ayu-vim' " or other package manager
 Plug 'olimorris/onedarkpro.nvim'
+Plug 'preservim/nerdtree'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
+let g:go_fmt_command = "goimports"
+
+autocmd BufWritePre *.go :silent! GoFmt
+
 ".NET"
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_server_use_net6 = 1
 let g:OmniSharp_want_snippet = 1
 
@@ -72,6 +80,7 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+map <silent> <C-n> :NERDTreeFocus<CR>
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -81,8 +90,8 @@ endfunction
 let g:coc_global_extensions = [
             \'coc-snippets',
             \'coc-tsserver',
-            \'coc-rust-analyzer',
             \'coc-go',
+            \'coc-rust-analyzer',
             \'coc-json',
             \'coc-pyright',
             \'coc-r-lsp',
