@@ -5,4 +5,5 @@ install:
 	-ln -s $(CURDIR)/.vimrc ~/.vimrc
 	-mkdir ~/.config/nvim
 	-ln -s $(CURDIR)/init.vim ~/.config/nvim/
+	-ln -s $(CURDIR)/coc-settings.json ~/.config/nvim/
 

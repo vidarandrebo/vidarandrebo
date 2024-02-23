@@ -102,6 +102,7 @@ let g:coc_global_extensions = [
             \'coc-tsserver',
             \'coc-rust-analyzer',
             \'coc-json',
+            \'coc-go',
             \'coc-pyright',
             \'coc-r-lsp',
             \'coc-clangd',
