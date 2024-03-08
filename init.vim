@@ -43,6 +43,8 @@ Plug 'dense-analysis/ale'
 "Rust"
 Plug 'rust-lang/rust.vim'
 
+Plug 'posva/vim-vue'
+
 Plug 'ayu-theme/ayu-vim' " or other package manager
 Plug 'navarasu/onedark.nvim'
 Plug 'preservim/nerdtree'
@@ -106,7 +108,8 @@ let g:coc_global_extensions = [
             \'coc-pyright',
             \'coc-r-lsp',
             \'coc-clangd',
-            \'coc-vue'
+            \'@yaegassy/coc-volar',
+            \'@yaegassy/coc-volar-tools',
             \]
 
 "inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"

@@ -13,6 +13,6 @@ then
 fi
 
 echo "Updating $1 version"
-npm version --prefix $2 $1
+npm version --prefix $2 $1 --git-tag-version false
 VERSION=`find . -type f -name "package.json" | grep -v "node_module" | xargs cat | jq -r '.version'`
 find . -type f -name "*.csproj" | xargs -L 1 set-csproj-version $VERSION 
