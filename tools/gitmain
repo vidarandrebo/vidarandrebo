@@ -1,0 +1,5 @@
+#!/bin/sh
+git checkout main
+git pull
+git branch | grep -v main | xargs git branch -D
+git fetch origin --prune
