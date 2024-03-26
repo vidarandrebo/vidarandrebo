@@ -1,3 +1,4 @@
+vim.cmd([[
 set number
 set relativenumber
 nnoremap JJ <C-W>j
@@ -28,31 +29,37 @@ set nocompatible
 filetype plugin indent on
 syntax enable
 
-call plug#begin()
+]])
 
-" Autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+local vim = vim
+local Plug = vim.fn['plug#']
 
-".NET".
-"Plug 'prabirshrestha/asyncomplete.vim', {'for':'cs'}
-Plug 'OmniSharp/omnisharp-vim'
+vim.call('plug#begin')
 
-"Err"
-Plug 'dense-analysis/ale'
+Plug('neoclide/coc.nvim', {['branch']= 'release'})
 
-"Rust"
+--.NET
+Plug('prabirshrestha/asyncomplete.vim', {['for']='cs'})
+Plug('OmniSharp/omnisharp-vim')
+
+--Err"
+Plug('dense-analysis/ale')
+
+--Rust
 Plug 'rust-lang/rust.vim'
 
 Plug 'posva/vim-vue'
 
-Plug 'ayu-theme/ayu-vim' " or other package manager
-Plug 'navarasu/onedark.nvim'
-Plug 'preservim/nerdtree'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug('ayu-theme/ayu-vim') -- or other package manager"
+Plug('navarasu/onedark.nvim')
+Plug('preservim/nerdtree')
+Plug('fatih/vim-go', { ['do']= ':GoUpdateBinaries' })
+Plug('nvim-treesitter/nvim-treesitter', {['do']= ':TSUpdate'})
 
-call plug#end()
+vim.call('plug#end')
 
 
+vim.cmd([[
 "Go"
 let g:go_fmt_command = "gofumpt"
 let g:go_autodetect_gopath = 1
@@ -105,6 +112,7 @@ let g:coc_global_extensions = [
             \'coc-rust-analyzer',
             \'coc-json',
             \'coc-go',
+            \'coc-clangd',
             \'coc-pyright',
             \'coc-r-lsp',
             \'coc-clangd',
@@ -128,3 +136,46 @@ let g:onedark_config = {
 let ayucolor="dark"   " for dark version of theme
 colorscheme onedark
 "colorscheme ayu
+]])
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  -- List of parsers to ignore installing (or "all")
+  --ignore_install = { "javascript" },
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    --disable = { "c", "rust" },
+    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+    disable = function(lang, buf)
+        local max_filesize = 100 * 1024 -- 100 KB
+        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if ok and stats and stats.size > max_filesize then
+            return true
+        end
+    end,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}

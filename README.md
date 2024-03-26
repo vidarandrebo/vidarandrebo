@@ -30,4 +30,4 @@ I usually use a version of vim or an editor with some form of vim emulation. Her
 
 [Vim](.vimrc) (This one is mostly used with VS and certain Jetbrains IDEs, and therfore does not include any extensions)
 
-[NeoVim](init.vim) I use NeoVim for programming smaller projects in C, python and for general text editing.
+[NeoVim](init.lua) I use NeoVim for programming smaller projects in C, python and for general text editing.
