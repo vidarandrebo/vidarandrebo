@@ -15,7 +15,6 @@ nnoremap <silent> ** :resize -2<CR>
 nnoremap << 5<C-w><
 nnoremap >> 5<C-w>>
 
-filetype off
 filetype plugin indent on
 syntax enable
 
@@ -32,7 +31,6 @@ vim.wo.linebreak = true
 vim.wo.list = false
 vim.opt.title = true
 vim.opt.signcolumn = "number"
-vim.opt.nocompatible = true
 
 
 local vim = vim
