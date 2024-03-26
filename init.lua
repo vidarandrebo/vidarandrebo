@@ -1,6 +1,4 @@
 vim.cmd([[
-set number
-set relativenumber
 nnoremap JJ <C-W>j
 nnoremap KK <C-W>k
 nnoremap HH <C-W>h
@@ -16,20 +14,26 @@ nnoremap <silent> ^ :resize +2<CR>
 nnoremap <silent> ** :resize -2<CR>
 nnoremap << 5<C-w><
 nnoremap >> 5<C-w>>
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set wrap linebreak
-set title
-set signcolumn=number
 
 filetype off
-set nocompatible
 filetype plugin indent on
 syntax enable
 
 ]])
+
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.softtabstop=4
+vim.opt.tabstop=4
+vim.opt.shiftwidth=4
+vim.opt.expandtab = true
+vim.wo.wrap = true
+vim.wo.linebreak = true
+vim.wo.list = false
+vim.opt.title = true
+vim.opt.signcolumn = "number"
+vim.opt.nocompatible = true
+
 
 local vim = vim
 local Plug = vim.fn['plug#']
@@ -59,30 +63,52 @@ Plug('nvim-treesitter/nvim-treesitter', {['do']= ':TSUpdate'})
 vim.call('plug#end')
 
 
+-- Go
+vim.g.go_fmt_command = "gofumpt"
+vim.g.go_autodetect_gopath = 1
+vim.g.go_list_type = "quickfix"
+--vim.g.go_highlight_types = 1
+--vim.g.go_highlight_fields = 1
+--vim.g.go_highlight_functions = 1
+--vim.g.go_highlight_function_calls = 1
+--vim.g.go_highlight_extra_types = 1
+--vim.g.go_highlight_generate_tags = 1
+
+-- .NET
+vim.g.OmniSharp_server_stdio = 1
+vim.g.OmniSharp_server_use_mono = 1
+vim.g.OmniSharp_server_use_net6 = 1
+vim.g.OmniSharp_want_snippet = 1
+
+-- Ale
+vim.g.ale_linters = {
+     cs = {'OmniSharp'},
+     go = {'vet', 'golint', 'typecheck'}
+ }
+
+-- COC
+vim.g.coc_global_extensions = {
+            'coc-snippets',
+            'coc-tsserver',
+            'coc-rust-analyzer',
+            'coc-json',
+            'coc-go',
+            'coc-clangd',
+            'coc-pyright',
+            'coc-r-lsp',
+            'coc-clangd',
+            '@yaegassy/coc-volar',
+            '@yaegassy/coc-volar-tools',
+}
+
+
+-- Rust
+vim.g.rustfmt_autosave = 1
+
 vim.cmd([[
-"Go"
-let g:go_fmt_command = "gofumpt"
-let g:go_autodetect_gopath = 1
-let g:go_list_type = "quickfix"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_generate_tags = 1
 autocmd BufWritePre *.go :silent! GoFmt
 
-".NET"
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_server_use_net6 = 1
-let g:OmniSharp_want_snippet = 1
 
-"Ale"
-let g:ale_linters = {
-            \'cs': ['OmniSharp'],
-            \'go': ['vet', 'golint', 'typecheck']
-            \}
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: There's always complete item selected by default, you may want to enable
@@ -106,25 +132,10 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_global_extensions = [
-            \'coc-snippets',
-            \'coc-tsserver',
-            \'coc-rust-analyzer',
-            \'coc-json',
-            \'coc-go',
-            \'coc-clangd',
-            \'coc-pyright',
-            \'coc-r-lsp',
-            \'coc-clangd',
-            \'@yaegassy/coc-volar',
-            \'@yaegassy/coc-volar-tools',
-            \]
 
 "inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"Rust"
-let g:rustfmt_autosave = 1
 
 "...
 set termguicolors     " enable true colors support
