@@ -31,6 +31,7 @@ vim.wo.linebreak = true
 vim.wo.list = false
 vim.opt.title = true
 vim.opt.signcolumn = "number"
+vim.opt.termguicolors = true     -- enable true colors support
 
 
 local vim = vim
@@ -57,6 +58,8 @@ Plug('navarasu/onedark.nvim')
 Plug('preservim/nerdtree')
 Plug('fatih/vim-go', { ['do']= ':GoUpdateBinaries' })
 Plug('nvim-treesitter/nvim-treesitter', {['do']= ':TSUpdate'})
+
+Plug('Tsuzat/NeoSolarized.nvim', { ['branch']= 'master' })
 
 vim.call('plug#end')
 
@@ -136,14 +139,13 @@ endfunction
 
 
 "...
-set termguicolors     " enable true colors support
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
-let g:onedark_config = {
-    \ 'style': 'darker',
-\}
-let ayucolor="dark"   " for dark version of theme
-colorscheme onedark
+"let g:onedark_config = {
+    "\ 'style': 'darker',
+"\}
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme onedark
 "colorscheme ayu
 ]])
 
@@ -188,3 +190,41 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+local ok_status, NeoSolarized = pcall(require, "NeoSolarized")
+
+if not ok_status then
+  return
+end
+
+-- Default Setting for NeoSolarized
+
+NeoSolarized.setup {
+  style = "dark", -- "dark" or "light"
+  transparent = false, -- true/false; Enable this to disable setting the background color
+  terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+  enable_italics = false, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
+  styles = {
+    -- Style to be applied to different syntax groups
+    comments = { italic = false },
+    keywords = { italic = false },
+    functions = { bold = true },
+    variables = {},
+    string = { italic = false },
+    underline = true, -- true/false; for global underline
+    undercurl = true, -- true/false; for global undercurl
+  },
+  -- Add specific hightlight groups
+  on_highlights = function(highlights, colors) 
+    -- highlights.Include.fg = colors.red -- Using `red` foreground for Includes
+  end, 
+}
+-- Set colorscheme to NeoSolarized
+vim.cmd([[
+    try
+        colorscheme NeoSolarized
+    catch (/^Vim\%((\a\+)\)\=:E18o)
+        colorscheme default
+        set background=dark
+    endtry
+]])
