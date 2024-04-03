@@ -2,7 +2,7 @@
     "suggest.noselect": true,
     "snippets.ultisnips.pythonPrompt": false,
     "languageserver": {
-        "go": {
+        "golang": {
             "command": "gopls",
             "rootPatterns": ["go.mod"],
             "filetypes": ["go"]
