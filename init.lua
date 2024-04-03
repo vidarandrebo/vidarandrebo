@@ -65,7 +65,8 @@ vim.call('plug#end')
 
 
 -- Go
-vim.g.go_fmt_command = "gofumpt"
+vim.g.go_fmt_command = "gopls"
+vim.g.go_gopls_gofumpt=1
 vim.g.go_autodetect_gopath = 1
 vim.g.go_list_type = "quickfix"
 --vim.g.go_highlight_types = 1
@@ -108,6 +109,7 @@ vim.g.rustfmt_autosave = 1
 
 vim.cmd([[
 autocmd BufWritePre *.go :silent! GoFmt
+"autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 
 
