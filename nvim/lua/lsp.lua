@@ -9,17 +9,55 @@ require('mason-lspconfig').setup({
   -- Replace the language servers listed here
   -- with the ones you want to install
     ensure_installed = {
-        'tsserver', 
+        'tsserver',
         'rust_analyzer',
         'gopls',
         'clangd',
         'omnisharp',
         'volar',
     },
-  handlers = {
-    lsp_zero.default_setup,
-  }
+--  handlers = {
+--    lsp_zero.default_setup,
+--  }
+    handlers = nil,
 })
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.textDocument.completion.completionItem = {
+    documentationFormat = { "markdown", "plaintext" },
+    snippetSupport = true,
+    preselectSupport = true,
+    insertReplaceSupport = true,
+    labelDetailsSupport = true,
+    deprecatedSupport = true,
+    commitCharactersSupport = true,
+    tagSupport = { valueSet = { 1 } },
+    resolveSupport = {
+        properties = {
+            "documentation",
+            "detail",
+            "additionalTextEdits",
+        },
+    },
+}
+
+local lspconfig = require("lspconfig")
+lspconfig.rust_analyzer.setup {}
+lspconfig.omnisharp.setup {
+    capabilities = capabilities,
+    enable_roslyn_analysers = true,
+	enable_import_completion = true,
+	organize_imports_on_format = true,
+	enable_decompilation_support = true,
+	filetypes = { 'cs', 'vb', 'csproj', 'sln', 'slnx', 'props', 'csx', 'props', 'targets' }
+}
+lspconfig.gopls.setup {
+    capabilities = capabilities,
+    settings = {
+        usePlaceholders = true,
+    },
+}
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
@@ -47,5 +85,11 @@ cmp.setup({
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
     end,
+  },
+  sources = {
+    {name = 'nvim_lsp'},
+    {name = 'luasnip'},
+    {name = 'buffer'},
+    {name = 'nvim_lsp_signature_help'},
   },
 })
