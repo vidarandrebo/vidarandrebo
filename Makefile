@@ -4,5 +4,4 @@ install:
 	-ln -s $(CURDIR)/tools/set-csproj-version ~/.local/bin/
 	-ln -s $(CURDIR)/.vimrc ~/.vimrc
 	-ln -s $(CURDIR)/nvim ~/.config/nvim
-	-ln -s $(CURDIR)/coc-settings.json ~/.config/nvim/
 
