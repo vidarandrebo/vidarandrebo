@@ -58,5 +58,9 @@ require("lazy").setup({
     {
         'saadparwaiz1/cmp_luasnip'
     },
-
+    {
+        --function signature box
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+    },
 })

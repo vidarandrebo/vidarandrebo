@@ -1,9 +1,9 @@
-vim.cmd([[
-nnoremap <silent> ^ :resize +2<CR>
+vim.cmd([[ nnoremap <silent> ^ :resize +2<CR>
 nnoremap <silent> ** :resize -2<CR>
 
 filetype plugin indent on
 syntax enable
+
 
 map <silent> <C-n> :NERDTreeFocus<CR>
 

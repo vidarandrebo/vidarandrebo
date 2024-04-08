@@ -44,6 +44,7 @@ capabilities.textDocument.completion.completionItem = {
 
 local lspconfig = require("lspconfig")
 lspconfig.rust_analyzer.setup {}
+lspconfig.volar.setup {}
 lspconfig.omnisharp.setup {
     capabilities = capabilities,
     enable_roslyn_analysers = true,
@@ -56,6 +57,7 @@ lspconfig.gopls.setup {
     capabilities = capabilities,
     settings = {
         usePlaceholders = true,
+        completeUnimported = true,
     },
 }
 
@@ -90,6 +92,10 @@ cmp.setup({
     {name = 'nvim_lsp'},
     {name = 'luasnip'},
     {name = 'buffer'},
-    {name = 'nvim_lsp_signature_help'},
+    --{name = 'nvim_lsp_signature_help'},
   },
 })
+
+local lsp_sign_cfg = require("lsp_signature_cfg")
+require'lsp_signature'.setup(lsp_sign_cfg)
+
