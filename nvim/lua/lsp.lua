@@ -60,6 +60,15 @@ lspconfig.gopls.setup {
         completeUnimported = true,
     },
 }
+lspconfig.lua_ls.setup {
+    capabilities = capabilities,
+}
+lspconfig.clangd.setup {
+    capabilities = capabilities,
+}
+lspconfig.rust_analyzer.setup {
+    capabilities = capabilities,
+}
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
