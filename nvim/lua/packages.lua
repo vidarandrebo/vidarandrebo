@@ -63,4 +63,11 @@ require("lazy").setup({
         "ray-x/lsp_signature.nvim",
         event = "VeryLazy",
     },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        ft = "go",
+        opts = function ()
+            return require "null-ls_cfg"
+        end,
+    },
 })

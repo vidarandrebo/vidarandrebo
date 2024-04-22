@@ -1,5 +1,7 @@
 local lsp_zero = require('lsp-zero')
 
+local util = require ("lspconfig/util")
+
 lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.default_keymaps({buffer = bufnr})
 end)
@@ -15,6 +17,7 @@ require('mason-lspconfig').setup({
         'clangd',
         'omnisharp',
         'volar',
+        'lua_ls',
     },
 --  handlers = {
 --    lsp_zero.default_setup,
@@ -55,10 +58,18 @@ lspconfig.omnisharp.setup {
 }
 lspconfig.gopls.setup {
     capabilities = capabilities,
+    cmd = {"gopls"},
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
     settings = {
-        usePlaceholders = true,
+        gopls = {
         completeUnimported = true,
+        --usePlaceholders = true,
+        analyses = {
+            unusedparams = true,
+      },
     },
+  },
 }
 lspconfig.lua_ls.setup {
     capabilities = capabilities,
