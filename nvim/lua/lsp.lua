@@ -80,6 +80,9 @@ lspconfig.clangd.setup {
 lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
 }
+lspconfig.texlab.setup {
+    capabilities = capabilities,
+}
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
