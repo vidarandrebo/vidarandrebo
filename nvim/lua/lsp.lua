@@ -18,6 +18,7 @@ require('mason-lspconfig').setup({
         'omnisharp',
         'volar',
         'lua_ls',
+        'pyright',
     },
 --  handlers = {
 --    lsp_zero.default_setup,
@@ -48,6 +49,7 @@ capabilities.textDocument.completion.completionItem = {
 local lspconfig = require("lspconfig")
 lspconfig.rust_analyzer.setup {}
 lspconfig.volar.setup {}
+lspconfig.pyright.setup {}
 lspconfig.omnisharp.setup {
     capabilities = capabilities,
     enable_roslyn_analysers = true,
