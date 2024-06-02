@@ -22,6 +22,10 @@ vim.opt.title = true
 vim.opt.signcolumn = "number"
 vim.opt.termguicolors = true     -- enable true colors support
 
+vim.opt.spelllang = 'en_gb'
+vim.opt.spell = true
+
+
 
 -- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -64,10 +68,10 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-require('onedark').setup {
-    style = 'darker'
-}
-require('onedark').load()
+--require('onedark').setup {
+--    style = 'darker'
+--}
+--require('onedark').load()
 require ("remap")
 require("lsp")
 
