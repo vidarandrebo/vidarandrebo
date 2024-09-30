@@ -47,7 +47,17 @@ capabilities.textDocument.completion.completionItem = {
 }
 
 local lspconfig = require("lspconfig")
-lspconfig.rust_analyzer.setup {}
+lspconfig.rust_analyzer.setup {
+    capabilities = capabilities,
+    filetypes = {"rust"},
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                allFeatures = true,
+            },
+        },
+    },
+}
 lspconfig.volar.setup {}
 lspconfig.pyright.setup {}
 lspconfig.omnisharp.setup {
@@ -77,9 +87,6 @@ lspconfig.lua_ls.setup {
     capabilities = capabilities,
 }
 lspconfig.clangd.setup {
-    capabilities = capabilities,
-}
-lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
 }
 lspconfig.texlab.setup {
