@@ -1,11 +1,12 @@
 ### Hello there 👋
 # Education
-## 2022-
+## 2022-2024
 University of Stavanger, Master of Computer Science - Secure and Reliable Systems
 ## 2019-2022
 University of Stavanger, Bachelor of Computer Science
 <!--
 **vidarandrebo/vidarandrebo** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+
 
 Here are some ideas to get you started:
 This is a comment
