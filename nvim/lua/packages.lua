@@ -8,6 +8,11 @@ require("lazy").setup({
         --theme
         'navarasu/onedark.nvim',
     },
+    { 
+        --theme
+        "catppuccin/nvim", 
+        name = "catppuccin"
+    },
     {
         --filetree
         'preservim/nerdtree'

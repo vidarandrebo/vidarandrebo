@@ -72,6 +72,19 @@ require'nvim-treesitter.configs'.setup {
 --    style = 'darker'
 --}
 --require('onedark').load()
+--colorscheme = vim
+
+require("catppuccin").setup({
+  flavour = "latte", -- latte, frappe, macchiato, mocha
+    background = { -- :h background
+        light = "latte",
+        dark = "mocha",
+    },
+  })
+
+-- setup must be called before loading
+vim.cmd.colorscheme "catppuccin"
+
 require ("remap")
 require("lsp")
 
