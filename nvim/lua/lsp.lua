@@ -11,7 +11,7 @@ require('mason-lspconfig').setup({
   -- Replace the language servers listed here
   -- with the ones you want to install
     ensure_installed = {
-        'tsserver',
+        'eslint',
         'rust_analyzer',
         'gopls',
         'clangd',
@@ -57,6 +57,9 @@ lspconfig.rust_analyzer.setup {
             },
         },
     },
+}
+lspconfig.eslint.setup {
+    capabilities = capabilities
 }
 lspconfig.volar.setup {}
 lspconfig.pyright.setup {}
