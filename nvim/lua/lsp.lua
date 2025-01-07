@@ -11,6 +11,7 @@ require('mason-lspconfig').setup({
   -- Replace the language servers listed here
   -- with the ones you want to install
     ensure_installed = {
+        'terraformls',
         'eslint',
         'rust_analyzer',
         'gopls',
@@ -61,6 +62,9 @@ lspconfig.rust_analyzer.setup {
 lspconfig.eslint.setup {
     capabilities = capabilities
 }
+lspconfig.terraformls.setup {
+    capabilities = capabilities
+}
 lspconfig.volar.setup {}
 lspconfig.pyright.setup {}
 lspconfig.omnisharp.setup {
@@ -95,6 +99,7 @@ lspconfig.clangd.setup {
 lspconfig.texlab.setup {
     capabilities = capabilities,
 }
+
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
