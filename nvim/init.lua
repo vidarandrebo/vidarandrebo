@@ -8,10 +8,8 @@ set clipboard+=unnamedplus
 
 map <silent> <C-n> :NERDTreeFocus<CR>
 
-vim.opt.shiftwidth=4
-vim.opt.expandtab = true
-
 ]])
+
 
 vim.opt.number = true
 vim.opt.relativenumber = true
