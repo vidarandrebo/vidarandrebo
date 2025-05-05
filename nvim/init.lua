@@ -4,8 +4,12 @@ nnoremap <silent> ** :resize -2<CR>
 filetype plugin indent on
 syntax enable
 
+set clipboard+=unnamedplus
 
 map <silent> <C-n> :NERDTreeFocus<CR>
+
+vim.opt.shiftwidth=4
+vim.opt.expandtab = true
 
 ]])
 
