@@ -69,7 +69,7 @@ require("lazy").setup({
         event = "VeryLazy",
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         ft = "go",
         opts = function ()
             return require "null-ls_cfg"
