@@ -17,7 +17,8 @@ require('mason-lspconfig').setup({
         'gopls',
         'clangd',
         'omnisharp',
-        'volar',
+        'vue_ls',
+        'ts_ls',
         'lua_ls',
         'pyright',
     },
@@ -99,16 +100,19 @@ lspconfig.texlab.setup {
     capabilities = capabilities,
 }
 
-lspconfig.volar.setup {
-  -- add filetypes for typescript, javascript and vue
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+lspconfig.ts_ls.setup {
+  capabilities = capabilities,
   init_options = {
-    vue = {
-      -- disable hybrid mode
-      hybridMode = false,
+    plugins = { -- I think this was my breakthrough that made it work
+      {
+        name = "@vue/typescript-plugin",
+        languages = { "vue" },
+      },
     },
   },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 }
+lspconfig.volar.setup {}
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
