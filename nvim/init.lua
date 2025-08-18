@@ -26,3 +26,10 @@ vim.opt.spell = true
 
 require("config.lazy")
 require("remap")
+local lspconfig = require("lspconfig")
+
+require("mason").setup()
+
+lspconfig.lua_ls.setup{}
+
+require("mason-lspconfig")
