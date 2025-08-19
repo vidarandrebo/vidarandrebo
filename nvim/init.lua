@@ -23,6 +23,8 @@ vim.opt.termguicolors = true     -- enable true colors support
 vim.opt.spelllang = 'en_gb'
 vim.opt.spell = true
 
+vim.g.netrw_banner=0
+vim.g.netrw_liststyle=3
 
 require("config.lazy")
 require("remap")

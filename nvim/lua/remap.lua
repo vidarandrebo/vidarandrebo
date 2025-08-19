@@ -21,3 +21,5 @@ vim.keymap.set('n', 'LL', '<C-W>l')
 vim.keymap.set('n', '==', '<C-W>=')
 vim.keymap.set('n', '<<', '5<C-w><')
 vim.keymap.set('n', '>>', '5<C-w>>')
+
+vim.keymap.set('n', '<C-n>', ':e .<CR>')
