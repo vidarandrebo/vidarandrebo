@@ -1,90 +1,69 @@
-vim.cmd([[ nnoremap <silent> ^ :resize +2<CR>
-nnoremap <silent> ** :resize -2<CR>
-
-filetype plugin indent on
-syntax enable
-set clipboard+=unnamedplus
-map <silent> <C-n> :NERDTreeFocus<CR>
-
-]])
-
-
+-- Options
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.softtabstop=4
-vim.opt.tabstop=4
-vim.opt.shiftwidth=4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.wo.wrap = true
-vim.wo.linebreak = true
-vim.wo.list = false
-vim.opt.title = true
-vim.opt.signcolumn = "number"
-vim.opt.termguicolors = true     -- enable true colors support
-
-vim.opt.spelllang = 'en_gb'
+vim.opt.autoindent = true
+vim.opt.fileformat = "unix"
+vim.opt.encoding = "utf-8"
+vim.opt.wrap = true
+vim.opt.linebreak = true
 vim.opt.spell = true
+vim.opt.spelllang = "en"
+vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 
-
-
--- lazy.nvim
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git", "clone", "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
-require ("packages")
+require("lazy").setup({
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
+    { "neovim/nvim-lspconfig" },
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
+    { "ray-x/lsp_signature.nvim" },
+})
 
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "go", "lua", "vim", "vimdoc", "query", "rust" },
+require("treesitter")
+require("setup_mason")
+require("setup_completion")
+require("setup_lspconfig")
+require("setup_signature")
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+-- Keymaps
+local map = vim.keymap.set
 
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
+-- Insert mode: bracket shortcuts for Norwegian keyboard
+map("i", "øø", "{")
+map("i", "ææ", "}")
+map("i", "ØØ", "[")
+map("i", "ÆÆ", "]")
+map("i", "åå", "{}")
+map("i", "ÅÅ", "()")
 
-  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+-- Normal mode: window navigation
+map("n", "JJ", "<C-W>j")
+map("n", "KK", "<C-W>k")
+map("n", "HH", "<C-W>h")
+map("n", "LL", "<C-W>l")
+map("n", "==", "<C-W>=")
 
-  highlight = {
-    enable = true,
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-
---require('onedark').setup {
---    style = 'darker'
---}
---require('onedark').load()
---colorscheme = vim
-
-require("catppuccin").setup({
-  flavour = "latte", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
-        light = "latte",
-        dark = "mocha",
-    },
-  })
-
--- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
-
-require ("remap")
-require("lsp")
-
+-- Normal mode: window resizing
+map("n", "^", ":resize +2<CR>", { silent = true })
+map("n", "**", ":resize -2<CR>", { silent = true })
+map("n", "<<", "5<C-w><")
+map("n", ">>", "5<C-w>>")
