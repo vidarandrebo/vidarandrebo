@@ -30,5 +30,33 @@ vim.lsp.config("gopls", {
     capabilities = capabilities,
 })
 
+vim.lsp.config("clangd", {
+    cmd = { "clangd" },
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+vim.lsp.config("rust_analyzer", {
+    cmd = { "rust-analyzer" },
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+vim.lsp.config("bashls", {
+    cmd = { "bash-language-server", "start" },
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+vim.lsp.config("pyright", {
+    cmd = { "pyright-langserver", "--stdio" },
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("gopls")
+vim.lsp.enable("clangd")
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("bashls")
+vim.lsp.enable("pyright")
