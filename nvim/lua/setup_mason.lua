@@ -16,6 +16,7 @@ require("mason-lspconfig").setup({
         "rust_analyzer",
         "bashls",
         "pyright",
+        "omnisharp",
     },
     automatic_installation = true,
 })

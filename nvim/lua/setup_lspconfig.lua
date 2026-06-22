@@ -54,9 +54,16 @@ vim.lsp.config("pyright", {
     capabilities = capabilities,
 })
 
+vim.lsp.config("omnisharp", {
+    cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("bashls")
 vim.lsp.enable("pyright")
+vim.lsp.enable("omnisharp")
