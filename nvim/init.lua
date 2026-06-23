@@ -1,3 +1,6 @@
+-- Leader key
+vim.g.mapleader = " "
+
 -- Options
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -36,6 +39,10 @@ require("lazy").setup({
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
     { "ray-x/lsp_signature.nvim" },
+    { "nvim-tree/nvim-web-devicons" },
+    { "nvim-tree/nvim-tree.lua" },
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-telescope/telescope.nvim", tag = "0.1.8" },
 })
 
 require("treesitter")
@@ -43,6 +50,8 @@ require("setup_mason")
 require("setup_completion")
 require("setup_lspconfig")
 require("setup_signature")
+require("setup_filetree")
+require("setup_telescope")
 
 -- Keymaps
 local map = vim.keymap.set
@@ -67,3 +76,9 @@ map("n", "^", ":resize +2<CR>", { silent = true })
 map("n", "**", ":resize -2<CR>", { silent = true })
 map("n", "<<", "5<C-w><")
 map("n", ">>", "5<C-w>>")
+
+-- Normal mode: file tree
+map("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
+
+map("n", "<leader>ff", ":Telescope find_files<CR>", { silent = true })
+map("n", "<leader>fg", ":Telescope live_grep<CR>", { silent = true })
