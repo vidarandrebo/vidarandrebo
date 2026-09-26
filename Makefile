@@ -35,6 +35,7 @@ copilot:
 junie: instructions/AGENTS.md
 	@mkdir -p ~/.junie
 	-ln -s $(CURDIR)/instructions/AGENTS.md ~/.junie/AGENTS.md
+	-ln -sT $(CURDIR)/skills ~/.junie/skills
 
 clean-agents:
 	rm -f $(CURDIR)/instructions/AGENTS.md
@@ -43,7 +44,7 @@ clean-copilot:
 	rm -f ~/.copilot/copilot-instructions.md ~/.copilot/instructions ~/.copilot/skills
 
 clean-junie:
-	rm -f ~/.junie/AGENTS.md
+	rm -f ~/.junie/AGENTS.md ~/.junie/skills
 
 clean-instructions: clean-agents clean-copilot clean-junie
 
