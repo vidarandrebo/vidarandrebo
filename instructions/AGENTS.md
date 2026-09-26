@@ -3,21 +3,25 @@
 ## General Preferences
 
 - Write clean, readable, and maintainable code adhering to SOLID and KISS principles.
+- Prefer "simple" over "clever" control flow.
 - Prefer self-documenting code with clear, expressive naming; comment the "why", not the "what".
 - Keep functions and methods small, focused, and adhering to single responsibility.
 - Handle edge cases and errors explicitly; never silently ignore errors or failures.
 - Practice defensive programming without overengineering.
 - Maintain consistent code formatting and follow existing project conventions.
 - Prioritize security: never commit secrets, API keys, or sensitive credentials.
+- If the project has a `.editorconfig`, use it.
+
+## Git Preferences
+
+- Never create a git commit, push changes, create or merge a pull request, or post/edit GitHub comments or reviews unless I explicitly requested that specific action. Reading GitHub data and inspecting local files is allowed.
 
 ## C# preferences
 
-- Use modern C# language features (e.g., pattern matching, switch expressions, file-scoped namespaces).
 - Enable and respect nullable reference types; avoid ignoring nullable warnings.
+- No not use primary constructors
 - Use `var` when the type is obvious from the right-hand side; use explicit types when clarity is needed.
-- Follow standard .NET naming conventions: PascalCase for types and public members, camelCase / `_camelCase` for private fields.
-- Use `async`/`await` for asynchronous programming; avoid `async void` except for event handlers.
-- Prefer LINQ and immutable records for data transfer objects (DTOs).
+- Prefer LINQ's method syntax over query syntax.
 - Prefer dependency injection and interfaces for loose coupling and testability.
 
 ## GitHub Actions preferences
@@ -58,6 +62,7 @@
 ## TypeScript preferences
 
 - Prefer `interface` for object contracts.
+- Prefer `class` over a type with related functions if the object needs functionality.
 - Avoid `any`; use `unknown` when the type is genuinely unknown.
 - Prefer explicit return types for exported functions.
 - Prefer `const` unless reassignment is necessary.
@@ -69,6 +74,7 @@
 - Use tuple syntax for defineEmits.
 - Prefer `ref()` for primitives and `ref()` / `reactive()` with explicit types for complex reactive state.
 - Use `computed()` for derived state and extract complex component logic into composables.
+- Use the project's preferred css library or component framework rather than using custom classes for styling.
 - Prefer scoped styles (`<style scoped>`) to avoid CSS leakage.
 - Avoid mutating props directly; emit events to notify parent components of changes.
 
