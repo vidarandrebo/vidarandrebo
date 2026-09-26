@@ -25,10 +25,14 @@
 - Pin third-party actions to full commit SHAs or explicit version tags (avoid mutable branches like `@main`).
 - Explicitly declare minimum required `permissions` at the workflow or job level.
 - Use clear, descriptive names for workflows, jobs, and steps.
+- Provde a description for inputs and outputs.
 - Set timeouts (`timeout-minutes`) on jobs to prevent hung runner instances.
 - Use GitHub Secrets for credentials and sensitive data; never log secrets or tokens.
 - Keep workflows modular using reusable workflows and composite actions where possible.
+- For shell-script heavy workflows, extract the shell script to a composite action where possible.
 - Use dependency caching (e.g., `actions/setup-*`, `actions/cache`) to optimize CI run times.
+- Prefer one top level entrypoint workflow for workflows that are triggered by the same event.
+- Use zizmor and actionlint actively while developing.
 
 ## Go preferences
 
@@ -39,7 +43,7 @@
 - Keep variable names short in localized scopes and descriptive for package-level / exported symbols.
 - Prefer composition and small interfaces over large interfaces.
 - Avoid package-level mutable state and global variables.
-- Keep code formatted using `gofmt` and `goimports`.
+- Keep code formatted using `gofumpt` and `goimports`.
 
 ## Shell script preferences
 
@@ -62,6 +66,7 @@
 
 - Use the Composition API with `<script setup lang="ts">`.
 - Strongly type props and emits using TypeScript type definitions (`defineProps<{ ... }>()` and `defineEmits<{ ... }>()`).
+- Use tuple syntax for defineEmits.
 - Prefer `ref()` for primitives and `ref()` / `reactive()` with explicit types for complex reactive state.
 - Use `computed()` for derived state and extract complex component logic into composables.
 - Prefer scoped styles (`<style scoped>`) to avoid CSS leakage.

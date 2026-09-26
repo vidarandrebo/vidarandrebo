@@ -12,4 +12,4 @@ applyTo: "**/*.go"
 - Keep variable names short in localized scopes and descriptive for package-level / exported symbols.
 - Prefer composition and small interfaces over large interfaces.
 - Avoid package-level mutable state and global variables.
-- Keep code formatted using `gofmt` and `goimports`.
+- Keep code formatted using `gofumpt` and `goimports`.
