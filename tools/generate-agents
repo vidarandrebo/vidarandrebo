@@ -16,7 +16,7 @@ else
   echo "# Coding Guidelines & Preferences" > "$TMP_FILE"
 fi
 
-find "$INSTRUCTIONS_DIR/languages" -mindepth 2 -maxdepth 2 -name "instructions.md" | sort | while IFS= read -r file; do
+find "$INSTRUCTIONS_DIR/languages" -mindepth 2 -maxdepth 2 -name "*.instructions.md" | sort | while IFS= read -r file; do
   echo "" >> "$TMP_FILE"
   awk '
     BEGIN {

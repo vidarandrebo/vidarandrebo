@@ -9,4 +9,3 @@
 - Practice defensive programming without overengineering.
 - Maintain consistent code formatting and follow existing project conventions.
 - Prioritize security: never commit secrets, API keys, or sensitive credentials.
-- Test this

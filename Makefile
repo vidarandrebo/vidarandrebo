@@ -13,7 +13,7 @@ install:
 
 instructions: instructions/AGENTS.md copilot junie
 
-instructions/AGENTS.md: instructions/common.md $(wildcard instructions/languages/*/instructions.md) tools/generate-agents
+instructions/AGENTS.md: instructions/common.md $(wildcard instructions/languages/*/*.instructions.md) tools/generate-agents
 	$(CURDIR)/tools/generate-agents
 
 agents: instructions/AGENTS.md
