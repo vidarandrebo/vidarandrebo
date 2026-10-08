@@ -15,3 +15,4 @@
 ## Git Preferences
 
 - Never create a git commit, push changes, create or merge a pull request, or post/edit GitHub comments or reviews unless I explicitly requested that specific action. Reading GitHub data and inspecting local files is allowed.
+- When posting descriptions and comments on Issues and PRs on my behalf, always include "(co-authored by ai)" as the last line.
