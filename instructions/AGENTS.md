@@ -24,6 +24,7 @@
 - Use `var` when the type is obvious from the right-hand side; use explicit types when clarity is needed.
 - Prefer LINQ's method syntax over query syntax.
 - Prefer dependency injection and interfaces for loose coupling and testability.
+- Use `ct` as the parameter name for `CancellationToken` method parameters.
 
 ## GitHub Actions preferences
 
